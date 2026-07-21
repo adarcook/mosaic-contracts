@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mosaic.local/schemas/nutrition/meal-analysis.v1.schema.json",
+  "title": "Meal Analysis V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "items", "totals", "requiresConfirmation"],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "estimatedQuantity", "confidence", "nutrition"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "estimatedQuantity": {"type": "string", "minLength": 1},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "requiresConfirmation": {"type": "boolean", "default": false},
+          "nutrition": {
+            "$ref": "#/$defs/nutrition"
+          }
+        }
+      }
+    },
+    "totals": {
+      "$ref": "#/$defs/nutrition"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": []
+    },
+    "questions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": []
+    },
+    "requiresConfirmation": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "nutrition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["caloriesKcal", "proteinG", "carbohydratesG", "fatG"],
+      "properties": {
+        "caloriesKcal": {"type": "number", "minimum": 0},
+        "proteinG": {"type": "number", "minimum": 0},
+        "carbohydratesG": {"type": "number", "minimum": 0},
+        "fatG": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}
