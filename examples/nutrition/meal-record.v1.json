@@ -1,0 +1,42 @@
+{
+  "contractVersion": "1.0",
+  "mealId": "0b8cbf12-09c1-4c5e-9f35-c165b28d1d45",
+  "occurredAt": "2026-07-28T13:00:00+03:00",
+  "status": "confirmed",
+  "mealType": "lunch",
+  "notes": "Manual entry confirmed by the user.",
+  "components": [
+    {
+      "componentId": "73ff268d-e1d1-47ec-aead-dcc8461a1b6d",
+      "foodName": "Chicken breast",
+      "quantity": 200,
+      "unit": "g",
+      "preparationState": "cooked",
+      "nutrition": {
+        "caloriesKcal": 330,
+        "proteinG": 62,
+        "carbohydratesG": 0,
+        "fatG": 7.2
+      },
+      "nutritionStatus": "user_confirmed",
+      "inventoryItemId": null,
+      "inventoryLinkStatus": "unlinked",
+      "confidence": 1
+    }
+  ],
+  "totals": {
+    "caloriesKcal": 330,
+    "proteinG": 62,
+    "carbohydratesG": 0,
+    "fatG": 7.2
+  },
+  "revision": 1,
+  "supersedesRevision": null,
+  "source": {
+    "producer": "mosaic-android",
+    "deviceId": "pixel-7",
+    "localRecordId": "meal-local-123",
+    "recordedAt": "2026-07-28T13:01:00+03:00",
+    "analysisId": null
+  }
+}

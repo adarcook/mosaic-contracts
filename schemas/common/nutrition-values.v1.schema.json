@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mosaic.local/schemas/common/nutrition-values.v1.schema.json",
+  "title": "Nutrition Values V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["caloriesKcal", "proteinG", "carbohydratesG", "fatG"],
+  "properties": {
+    "caloriesKcal": {"type": "number", "minimum": 0},
+    "proteinG": {"type": "number", "minimum": 0},
+    "carbohydratesG": {"type": "number", "minimum": 0},
+    "fatG": {"type": "number", "minimum": 0},
+    "fiberG": {"type": "number", "minimum": 0},
+    "sodiumMg": {"type": "number", "minimum": 0}
+  }
+}
