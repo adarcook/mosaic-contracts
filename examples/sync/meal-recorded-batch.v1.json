@@ -1,0 +1,29 @@
+{
+  "contractVersion": "1.0",
+  "batchId": "5914d724-a1c2-4133-a45a-7ff012172cc3",
+  "clientId": "mosaic-android:pixel-7",
+  "checkpoint": null,
+  "createdAt": "2026-07-28T13:02:00+03:00",
+  "events": [
+    {
+      "eventId": "917460a5-41ca-42a4-8946-a8ab48e4f932",
+      "eventType": "nutrition.meal.recorded",
+      "eventVersion": 1,
+      "occurredAt": "2026-07-28T13:00:00+03:00",
+      "recordedAt": "2026-07-28T13:01:00+03:00",
+      "producer": "mosaic-android",
+      "subjectId": "adar",
+      "correlationId": "0b8cbf12-09c1-4c5e-9f35-c165b28d1d45",
+      "causationId": null,
+      "payload": {
+        "mealId": "0b8cbf12-09c1-4c5e-9f35-c165b28d1d45",
+        "revision": 1,
+        "status": "confirmed"
+      },
+      "source": {
+        "deviceId": "pixel-7",
+        "localRecordId": "meal-local-123"
+      }
+    }
+  ]
+}
