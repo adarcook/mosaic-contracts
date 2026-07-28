@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mosaic.local/schemas/nutrition/meal-record.v1.schema.json",
+  "title": "Meal Record V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "mealId", "occurredAt", "status", "components", "revision", "source"],
+  "properties": {
+    "contractVersion": {"const": "1.0"},
+    "mealId": {"type": "string", "format": "uuid"},
+    "occurredAt": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["draft", "confirmed", "deleted"]},
+    "mealType": {"enum": ["breakfast", "lunch", "dinner", "snack", "other"]},
+    "notes": {"type": "string", "maxLength": 2000},
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/mealComponent"}
+    },
+    "totals": {"$ref": "../common/nutrition-values.v1.schema.json"},
+    "revision": {"type": "integer", "minimum": 1},
+    "supersedesRevision": {"type": ["integer", "null"], "minimum": 1},
+    "source": {"$ref": "#/$defs/sourceReference"}
+  },
+  "$defs": {
+    "mealComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["componentId", "foodName", "quantity", "unit", "preparationState", "nutrition", "nutritionStatus"],
+      "properties": {
+        "componentId": {"type": "string", "format": "uuid"},
+        "foodName": {"type": "string", "minLength": 1, "maxLength": 300},
+        "quantity": {"type": "number", "exclusiveMinimum": 0},
+        "unit": {"enum": ["g", "ml", "piece", "serving", "tbsp", "tsp", "cup"]},
+        "preparationState": {"enum": ["raw", "cooked", "prepared", "unknown"]},
+        "nutrition": {"$ref": "../common/nutrition-values.v1.schema.json"},
+        "nutritionStatus": {"enum": ["estimated", "user_confirmed", "verified"]},
+        "inventoryItemId": {"type": ["string", "null"], "format": "uuid"},
+        "inventoryLinkStatus": {"enum": ["unlinked", "suggested", "confirmed", "not_applicable"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "notes": {"type": "string", "maxLength": 1000}
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producer", "deviceId", "localRecordId", "recordedAt"],
+      "properties": {
+        "producer": {"type": "string", "minLength": 1},
+        "deviceId": {"type": "string", "minLength": 1},
+        "localRecordId": {"type": "string", "minLength": 1},
+        "recordedAt": {"type": "string", "format": "date-time"},
+        "analysisId": {"type": ["string", "null"], "format": "uuid"}
+      }
+    }
+  }
+}
